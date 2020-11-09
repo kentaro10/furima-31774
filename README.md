@@ -24,8 +24,8 @@ has_many :purchase_records
 |      category_id              | integer    | null: false | 
 |      status_id                | integer    | null: false | 
 | burden_of_shipping_charges_id | integer    | null: false | 
-| Shipping_area_id              | integer    | null: false | 
-| Days_to_ship_id               | integer    | null: false | 
+| shipping_area_id              | integer    | null: false | 
+| days_to_ship_id               | integer    | null: false | 
 | Selling_price                 | integer    | null: false | 
 | user                          | references | foreign_key: true | 
 
