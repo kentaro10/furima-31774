@@ -23,7 +23,7 @@ has_many :purchase_records
 |      explanation              | text       | null:false  | 
 |      category_id              | integer    | null: false | 
 |      status_id                | integer    | null: false | 
-| burden_of_shipping_charges_id | integer    | null: false | 
+| burden_of_shipping_charge_id | integer    | null: false | 
 | shipping_area_id              | integer    | null: false | 
 | days_to_ship_id               | integer    | null: false | 
 | selling_price                 | integer    | null: false | 
@@ -46,13 +46,14 @@ belongs_to ;item
 has_one    :street_address
 
 ## street_addressテーブル
-| Column                    | Type   | Options     | 
-| ------------------------- | ------ | ----------- | 
-| postal_code               | string | null: false | 
-| prefectures_id            | integer | null: false | 
-| cities_towns_and_villages | string | null: false | 
-| street_number             | string | null: false | 
-| building_name             | string |             | 
-| telephone_number          | string | null: false | 
+| Column                    | Type    | Options     | 
+| ------------------------- | ------  | ----------- | 
+| postal_code               | string  | null: false | 
+| prefecture_id             | integer | null: false | 
+| cities_towns_and_villages | string  | null: false | 
+| street_number             | string  | null: false | 
+| building_name             | string  |             | 
+| telephone_number          | string  | null: false | 
+| purchase_record           | references | foreign_key: true |
 ### Association
 belongs_to :purchase_record
