@@ -29,3 +29,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+.Ds_Store
+
+# ファイルの一番下の行に追記する
+group :production do
+  gem 'rails_12factor'
+end
