@@ -42,7 +42,7 @@ has_one    :purchase_record
  
 ### Association
 belongs_to :user
-belongs_to ;item
+belongs_to :item
 has_one    :street_address
 
 ## street_addressテーブル
