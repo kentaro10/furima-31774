@@ -26,7 +26,7 @@ has_many :purchase_records
 | burden_of_shipping_charges_id | integer    | null: false | 
 | shipping_area_id              | integer    | null: false | 
 | days_to_ship_id               | integer    | null: false | 
-| Selling_price                 | integer    | null: false | 
+| selling_price                 | integer    | null: false | 
 | user                          | references | foreign_key: true | 
 
 
