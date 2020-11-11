@@ -34,6 +34,8 @@ describe 'ユーザー新規登録' do
       another_user.valid?
       expect(another_user.errors.full_messages).to include("Email has already been taken")
     end
+    it "emailは＠を含まないと登録できない"do
+    end
 
     it "passwordが空では登録できない"do
     @user.password = ""
@@ -57,6 +59,17 @@ describe 'ユーザー新規登録' do
     @user.valid?
     expect(@user.errors.full_messages).to include("First name can't be blank")
     end
+    it "first_nameが漢字・平仮名・カタカナ以外では登録できないこと" do
+      @user.first_name = "aa"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name は、ひらがなかカタカナか漢字である必要があります")
+    end
+    it "passwordが全角では登録できない" do
+      @user.password = "１２３４５６７A"
+      @user.password_confirmation = "１２３４５６７A" 
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password は半角6文字以上の英数字それぞれ一文字以上含む必要があります")
+    end
     it "passwordが数字だけだと登録できない"do
     @user.password = "1234567"
     @user.password_confirmation = "1234567"
@@ -74,15 +87,30 @@ describe 'ユーザー新規登録' do
     @user.valid?
     expect(@user.errors.full_messages).to include("Second name can't be blank")
     end
+    it "second_nameが漢字・平仮名・カタカナ以外では登録できないこと" do
+      @user.second_name = "aa"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Second name は、ひらがなかカタカナか漢字である必要があります")
+    end
     it "first_name_kanaが空では登録できない" do
       @user.first_name_kana = ""
     @user.valid?
     expect(@user.errors.full_messages).to include("First name kana can't be blank")
     end
+    it "first_name_kanaが全角カタカナ以外では登録できないこと" do
+      @user.first_name_kana = "ああ"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana は、カタカナである必要があります")
+    end
     it "second_name_kanaが空では登録できない"do
     @user.second_name_kana = ""
     @user.valid?
     expect(@user.errors.full_messages).to include("Second name kana can't be blank")
+    end
+    it "second_name_kanaが全角カタカナ以外では登録できないこと" do
+      @user.second_name_kana = "ああ"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Second name kana は、カタカナである必要があります")
     end
     it "生年月日が空では登録できない"do
     @user.birthday = ""
