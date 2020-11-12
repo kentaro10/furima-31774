@@ -13,5 +13,6 @@ class User < ApplicationRecord
          end
          validates :password,         format: { with:  /\A(?=.*?[A-z])(?=.*?[\d])[A-z\d]+\z/i, message: "は半角6文字以上の英数字それぞれ一文字以上含む必要があります"}
          validates :email,            format: { with: /@/, message: "は＠が必要です" }
+         has_many :items
 
 end
