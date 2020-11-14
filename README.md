@@ -15,12 +15,12 @@
 ### Association
 has_many :items
 has_many :purchase_records
-
+ 
 ## itemsテーブル
 | Column                        | Type       | Options     | 
 | --------------------------    | ---------- | ----------- | 
 |      name                     | string     | null: false | 
-|      explanation              | text       | null:false  | 
+|      explanation    u          | text       | null:false  | 
 |      category_id              | integer    | null: false | 
 |      status_id                | integer    | null: false | 
 | burden_of_shipping_charge_id | integer    | null: false | 
