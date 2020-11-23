@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_area
   belongs_to :days_to_ship
 
+  has_one    :order
   belongs_to :user
   has_one_attached :image
 
