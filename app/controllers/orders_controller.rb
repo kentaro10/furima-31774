@@ -1,14 +1,15 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: :index
+  before_action :set_item, only: [:index, :create, :move_to_index]
   before_action :move_to_index, only: :index
-  before_action :move_to_index_2, only: :index
+  
   def index
     @order_form = OrderForm.new
-    @item = Item.find(params[:item_id])
+    
   end
 
   def create
-    @item = Item.find(params[:item_id])
+    
     @order_form = OrderForm.new(order_params)
     if@order_form.valid?
       pay_item
@@ -35,17 +36,17 @@ private
         currency: 'jpy'                 # 通貨の種類（日本円）
       )
  end
+
+ def set_item
+  @item = Item.find(params[:item_id])
+ end
+ 
  def move_to_index
-  @item = Item.find(params[:item_id])
-  if user_signed_in?  && current_user.id == @item.user_id 
+  
+  if user_signed_in?  && current_user.id == @item.user_id or @item.order.present?
     redirect_to root_path
   end
  end
- def move_to_index_2
-  @item = Item.find(params[:item_id])
-  if @item.order.present?
-    redirect_to root_path
-  end
- end
+ 
 end
  

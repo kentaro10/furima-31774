@@ -14,6 +14,11 @@ RSpec.describe OrderForm, type: :model do
      it '全て入力されている時' do
       expect(@order_form).to be_valid
      end
+     it "建物名が空でも保存される" do
+      @order_form.building_name = ""
+      @order_form.valid?
+      expect(@order_form).to be_valid
+     end
    end
    context '商品購入情報が保存されない時' do
     it "郵便番号がないと保存されない" do

@@ -33,7 +33,7 @@
     
 
     <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <% elsif user_signed_in? %>
+    <% elsif user_signed_in? && @item.order.blank? %>
 
     <%= link_to '購入画面に進む', item_orders_path(@item.id) ,class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
