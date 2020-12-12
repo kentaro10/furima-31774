@@ -8,13 +8,13 @@ class Item < ApplicationRecord
 
   has_one    :order
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
 
   with_options presence: true do
   validates :name,           length: { maximum:40 }
   validates :explanation,    length: { maximum:1000 }
   validates :selling_price,  numericality: {  greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999,  message: "is out of setting range"}
-  validates :image    
+  validates :images    
   end
   validates :category_id,  numericality: { other_than: 1 }
   validates :status_id, numericality: { other_than: 1 }
