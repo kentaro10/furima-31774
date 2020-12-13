@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy ]
   before_action :move_to_index, only: :edit
   before_action :move_to_index_2, only: :edit
+  before_action :search_item, only: [:index, :search, :show]
   def index
     @items = Item.includes(:user).order("created_at DESC")
     
@@ -46,6 +47,11 @@ class ItemsController < ApplicationController
     
   end
 
+  def search
+    @results = @p.result  # 検索条件にマッチした商品の情報を取得
+   
+  end
+
 
   private
 
@@ -68,5 +74,9 @@ class ItemsController < ApplicationController
     unless  @item.order.blank?
       redirect_to action: :index
     end
+  end
+
+  def search_item
+    @p = Item.ransack(params[:q])  # 検索オブジェクトを生成
   end
 end

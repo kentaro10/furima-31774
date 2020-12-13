@@ -10,6 +10,14 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many_attached :images
 
+  def self.search(search)
+    if search != ""
+      Item.where('text LIKE(?)', "%#{search}%")
+    else
+      Item.all
+    end
+  end
+
   with_options presence: true do
   validates :name,           length: { maximum:40 }
   validates :explanation,    length: { maximum:1000 }

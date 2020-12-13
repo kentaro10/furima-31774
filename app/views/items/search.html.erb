@@ -1,0 +1,40 @@
+<%= render "shared/header" %>
+<h1>
+  検索結果
+</h1>
+<%# 検索結果の個数で条件分岐 %>
+<div class='item-contents'>
+<% if @results.length !=0 %>
+  <% @results.each do |result| %>
+   <li class='list'>
+        <%= link_to item_path(result.id) do %>
+        <div class='item-img-content'>
+          <% result.images.first(1).each do |image| %>
+      <%= image_tag image, class:"item-img" if result.images.attached?  %>
+    <% end %>
+
+          
+
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= result.name %>
+          </h3>
+          <div class='item-price'>
+            <span><%= "#{result.selling_price}" %>円<br><%= result.burden_of_shipping_charge.name %></span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <% end %>
+      <% else %>
+  該当する商品はありません
+<% end %>
+</div>
+<br>
+<%= link_to 'トップページへ戻る', root_path %>
+<%= render "shared/footer" %>
