@@ -68,3 +68,4 @@ gem 'active_hash'
 gem 'payjp'
 gem 'ransack'
 gem "gretel"
+gem 'rails-i18n'
