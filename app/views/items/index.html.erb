@@ -1,4 +1,5 @@
-<%= render "shared/header" %>
+<%= render partial: "shared/header", locals: { items: @items } %>
+<% breadcrumb :root %>
 <div class='main'>
 
   <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
@@ -132,7 +133,9 @@
       <li class='list'>
         <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
-          <%= image_tag item.image, class: "item-img" if item.image.attached? %>
+          <% item.images.first(1).each do |image| %>
+      <%= image_tag image, class:"item-img" if item.images.attached?  %>
+    <% end %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
           <% if item.order.present? %>

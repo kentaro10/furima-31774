@@ -12,6 +12,7 @@ app/assets/stylesheets/items/new.css %>
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
     <%= render 'shared/error_messages', model: @item %>
     <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <% breadcrumb :edit_item %>
 
     <%# 出品画像 %>
     <div class="img-upload">
@@ -23,7 +24,7 @@ app/assets/stylesheets/items/new.css %>
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"item-image" %>
+        <%= f.file_field :images, name: "item[images][]", id:"item-image" %>
       </div>
     </div>
     <%# /出品画像 %>
